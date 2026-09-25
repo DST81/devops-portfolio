@@ -24,7 +24,7 @@ Für die weiteren DevOps-Komponenten werden zusätzlich benötigt:
 
 ## Installation
 
-Repository klonen:
+Repo klonen:
 
     git clone git@github.com:DST81/devops-portfolio.git
     cd devops-portfolio
