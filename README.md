@@ -182,7 +182,7 @@ Ziel ist es, die Anwendung ohne zusätzliche kostenpflichtige Infrastruktur öff
 
 Die Projektstruktur wird im Laufe der Entwicklung erweitert.
 
-Geplant ist beispielsweise:
+Geplant ist unter anderem:
 
     devops-portfolio/
     ├── README.md
