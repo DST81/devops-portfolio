@@ -96,7 +96,7 @@ Die konkreten Endpunkte und verfügbaren HTTP-Methoden werden im Laufe der Entwi
 
 | Bereich | Technologie | Begründung |
 | --- | --- | --- |
-| Sprache | Python 3.12 / Flask | Anschluss an CDS202, kleine Lernkurve |
+| Sprache | Python 3.12 / Flask |  kleine Lernkurve |
 | Container | Docker / Docker Compose | Industriestandard |
 | CI/CD | GitHub Actions | Kostenlos für öffentliche Repositories, keine zusätzliche Infrastruktur |
 | Cloud | Render (Free Tier) | Ohne Kreditkarte nutzbar |
