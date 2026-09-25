@@ -44,7 +44,7 @@ Die Anwendung kann während der Entwicklung lokal mit Flask gestartet werden:
 
     flask --app src.app run
 
-Anschließend ist die Anwendung standardmäßig unter `http://127.0.0.1:5000` erreichbar.
+Anschliessend ist die Anwendung standardmässig unter `http://127.0.0.1:5000` erreichbar.
 
 ### Mit Docker
 
