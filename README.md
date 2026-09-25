@@ -60,13 +60,13 @@ Die Bibliotheksverwaltung bildet zentrale Abläufe einer Bibliothek ab.
 
 Geplant sind unter anderem:
 
-- 📚 Verwaltung von Büchern
-- 📖 Verwaltung einzelner Exemplare
-- 👤 Verwaltung von Mitgliedern
-- ↗️ Erfassung von Ausleihen
-- ↩️ Bearbeitung von Rückgaben
-- 🔎 Anzeige der Verfügbarkeit
-- ⏰ Erkennung überfälliger Ausleihen
+- Verwaltung von Büchern
+- Verwaltung einzelner Exemplare
+- Verwaltung von Mitgliedern
+- Erfassung von Ausleihen
+- Bearbeitung von Rückgaben
+- Anzeige der Verfügbarkeit
+- Erkennung überfälliger Ausleihen
 
 Ein besonderer Schwerpunkt liegt auf den **Beziehungen zwischen den verschiedenen Entitäten** und den Zuständen eines Exemplars:
 
