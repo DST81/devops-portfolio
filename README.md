@@ -72,6 +72,14 @@ Ein besonderer Schwerpunkt liegt auf den **Beziehungen zwischen den verschiedene
 
     verfügbar → ausgeliehen → überfällig
 
+## Branching-Strategie
+
+* `main` enthält den stabilen Projektstand.
+* Neue Funktionen werden in `feature/<kurze-beschreibung>` entwickelt.
+* Änderungen werden über Pull Requests nach `main` gemergt.
+* Vor dem Merge müssen die Tests erfolgreich sein.
+* Nach dem Merge wird der Feature-Branch gelöscht.
+
 ## REST-API
 
 Die Anwendung stellt eine REST-API zur Verfügung, über die die Daten der Bibliotheksverwaltung verarbeitet werden können.
