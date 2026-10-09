@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="card">
+    <h1>Members</h1>
+    <form method="post" action="/members">
+      <input name="name" type="text" placeholder="Name" required>
+      <input name="email" type="email" placeholder="Email" required>
+      <button type="submit">Add member</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Books borrowed</th>
+          <th>Titles</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for member in members %}
+          <tr>
+            <td>{{ member.id }}</td>
+            <td>{{ member.name }}</td>
+            <td>{{ member.email }}</td>
+            <td>{{ member.borrowed_count }}</td>
+            <td>
+              {% if member.borrowed_books %}
+                {% for book in member.borrowed_books %}
+                  {{ book.title }}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+              {% else %}
+                -
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
