@@ -190,6 +190,33 @@ def test_create_member():
     }
 
 
+def test_index_page_renders():
+    client = app.test_client()
+
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert b"Library" in response.data
+
+
+def test_books_page_renders():
+    client = app.test_client()
+
+    response = client.get("/books")
+
+    assert response.status_code == 200
+    assert b"Books" in response.data
+
+
+def test_members_page_renders():
+    client = app.test_client()
+
+    response = client.get("/members")
+
+    assert response.status_code == 200
+    assert b"Members" in response.data
+
+
 def test_get_member():
     client = app.test_client()
 

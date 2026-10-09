@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="card">
+    <h1>Library</h1>
+    <p>Simple overview of the library app.</p>
+  </div>
+
+  <div class="summary">
+    <div class="summary-box">
+      <h3>Books</h3>
+      <p>{{ books | length }} total</p>
+    </div>
+    <div class="summary-box">
+      <h3>Members</h3>
+      <p>{{ members | length }} total</p>
+    </div>
+    <div class="summary-box">
+      <h3>Borrowed</h3>
+      <p>{{ books | selectattr('status', 'equalto', 'borrowed') | list | length }}</p>
+    </div>
+  </div>
+{% endblock %}
