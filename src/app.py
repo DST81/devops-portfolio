@@ -9,6 +9,20 @@ members = []
 next_member_id = 1
 
 
+def get_book_by_id(book_id):
+    for book in books:
+        if book["id"] == book_id:
+            return book
+    return None
+
+
+def get_member_by_id(member_id):
+    for member in members:
+        if member["id"] == member_id:
+            return member
+    return None
+
+
 @app.get("/health")
 def health():
     return jsonify(status="ok")
@@ -39,6 +53,8 @@ def create_member():
         "id": next_member_id,
         "name": data["name"],
         "email": data["email"],
+        "borrowed_books": [],
+        "borrowed_count": 0,
     }
 
     members.append(member)
@@ -49,10 +65,10 @@ def create_member():
 
 @app.get("/api/members/<int:member_id>")
 def get_member(member_id):
-    for member in members:
-        if member["id"] == member_id:
-            return jsonify(member)
-    return jsonify(error="Member not found"), 404
+    member = get_member_by_id(member_id)
+    if member is None:
+        return jsonify(error="Member not found"), 404
+    return jsonify(member)
 
 
 @app.put("/api/members/<int:member_id>")
@@ -80,9 +96,9 @@ def delete_member(member_id):
 
 @app.get("/api/books/<int:book_id>")
 def get_book(book_id):
-    for book in books:
-        if book["id"] == book_id:
-            return jsonify(book)
+    book = get_book_by_id(book_id)
+    if book is not None:
+        return jsonify(book)
     return jsonify(error="Book not found"), 404
 
 
@@ -97,6 +113,8 @@ def create_book():
         "title": data['title'],
         "author": data['author'],
         "isbn": data['isbn'],
+        "status": "available",
+        "borrowed_to": None,
     }
 
     books.append(book)
@@ -117,6 +135,67 @@ def update_book(book_id):
 
             return jsonify(book)
     return jsonify(error="Book not found"), 404
+
+
+@app.post("/api/books/<int:book_id>/borrow")
+def borrow_book(book_id):
+    data = request.get_json() or {}
+    member_id = data.get("member_id")
+
+    book = get_book_by_id(book_id)
+    if book is None:
+        return jsonify(error="Book not found"), 404
+
+    member = get_member_by_id(member_id)
+    if member is None:
+        return jsonify(error="Member not found"), 404
+
+    if book["status"] == "borrowed":
+        return jsonify(error="Book already borrowed"), 409
+
+    book["status"] = "borrowed"
+    book["borrowed_to"] = member_id
+
+    if not any(loan["id"] == book_id for loan in member["borrowed_books"]):
+        member["borrowed_books"].append({
+            "id": book["id"],
+            "title": book["title"],
+            "author": book["author"],
+            "isbn": book["isbn"],
+        })
+
+    member["borrowed_count"] = len(member["borrowed_books"])
+
+    return jsonify(message="Book borrowed successfully", book=book, member=member), 200
+
+
+@app.post("/api/books/<int:book_id>/return")
+def return_book(book_id):
+    data = request.get_json() or {}
+    member_id = data.get("member_id")
+
+    book = get_book_by_id(book_id)
+    if book is None:
+        return jsonify(error="Book not found"), 404
+
+    if book["status"] != "borrowed":
+        return jsonify(error="Book is not currently borrowed"), 400
+
+    member = get_member_by_id(member_id)
+    if member is None:
+        return jsonify(error="Member not found"), 404
+
+    if book["borrowed_to"] != member_id:
+        return jsonify(error="This book is not borrowed by this member"), 400
+
+    book["status"] = "available"
+    book["borrowed_to"] = None
+    member["borrowed_books"] = [
+        loan for loan in member["borrowed_books"] if loan["id"] != book_id
+    ]
+    member["borrowed_count"] = len(member["borrowed_books"])
+
+    return jsonify(message="Book returned successfully", book=book, member=member), 200
 
 
 @app.delete("/api/books/<int:book_id>")
