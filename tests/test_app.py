@@ -343,7 +343,9 @@ def test_borrow_book_and_show_member_loans():
     assert member_response.status_code == 200
     assert member_response.get_json()["borrowed_count"] == 1
     assert len(member_response.get_json()["borrowed_books"]) == 1
-    assert member_response.get_json()["borrowed_books"][0]["title"] == "Pippi Langstrumpf"
+    assert (
+        member_response.get_json()["borrowed_books"][0]["title"] == "Pippi Langstrumpf"
+    )
 
     book_response = client.get(f"/api/books/{book_id}")
     assert book_response.status_code == 200

@@ -110,12 +110,14 @@ def borrow_book_ui(book_id):
     book["borrowed_to"] = member_id
 
     if not any(loan["id"] == book_id for loan in member["borrowed_books"]):
-        member["borrowed_books"].append({
-            "id": book["id"],
-            "title": book["title"],
-            "author": book["author"],
-            "isbn": book["isbn"],
-        })
+        member["borrowed_books"].append(
+            {
+                "id": book["id"],
+                "title": book["title"],
+                "author": book["author"],
+                "isbn": book["isbn"],
+            }
+        )
 
     member["borrowed_count"] = len(member["borrowed_books"])
     return redirect(url_for("books_page"))
@@ -225,9 +227,9 @@ def create_book():
 
     book = {
         "id": next_book_id,
-        "title": data['title'],
-        "author": data['author'],
-        "isbn": data['isbn'],
+        "title": data["title"],
+        "author": data["author"],
+        "isbn": data["isbn"],
         "status": "available",
         "borrowed_to": None,
     }
@@ -272,12 +274,14 @@ def borrow_book(book_id):
     book["borrowed_to"] = member_id
 
     if not any(loan["id"] == book_id for loan in member["borrowed_books"]):
-        member["borrowed_books"].append({
-            "id": book["id"],
-            "title": book["title"],
-            "author": book["author"],
-            "isbn": book["isbn"],
-        })
+        member["borrowed_books"].append(
+            {
+                "id": book["id"],
+                "title": book["title"],
+                "author": book["author"],
+                "isbn": book["isbn"],
+            }
+        )
 
     member["borrowed_count"] = len(member["borrowed_books"])
 
