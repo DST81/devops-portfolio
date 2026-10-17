@@ -54,6 +54,9 @@ Die Anwendung kann alternativ als Container gestartet werden:
 
 Dadurch werden die für die Anwendung benötigten Container erstellt und gestartet.
 
+Weitere Details zur Woche 4 und zum Docker-Nachweis finden sich in [WEEK4_DOCKER.md](WEEK4_DOCKER.md).
+
+
 ## Fachlicher Umfang
 
 Die Bibliotheksverwaltung bildet zentrale Abläufe einer Bibliothek ab.

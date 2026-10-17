@@ -39,3 +39,8 @@ instance/
 
 # Logs
 *.log
+
+# Documentation
+WEEK4_DOCKER.md
+
+
