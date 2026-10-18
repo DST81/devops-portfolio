@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, redirect, render_template, request, url_for
+import os
 
 app = Flask(__name__)
 
@@ -8,6 +9,7 @@ next_book_id = 1
 members = []
 next_member_id = 1
 
+sample = 'x'
 
 def get_book_by_id(book_id):
     for book in books:
