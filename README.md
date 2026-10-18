@@ -1,3 +1,5 @@
+![CI](https://github.com/DST81/devops-portfolio/actions/workflows/ci.yml/badge.svg)
+
 # DevOps Portfolio – Bibliotheksverwaltung
 
 Eine webbasierte Bibliotheksverwaltung zur Verwaltung von Büchern, Exemplaren, Mitgliedern sowie Ausleihen und Rückgaben.
