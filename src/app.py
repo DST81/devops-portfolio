@@ -8,6 +8,7 @@ next_book_id = 1
 members = []
 next_member_id = 1
 
+
 def get_book_by_id(book_id):
     for book in books:
         if book["id"] == book_id:
