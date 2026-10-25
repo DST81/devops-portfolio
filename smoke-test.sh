@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #
-# Smoke test for the in-memory Flask library application.
+# Smoke test for the libraryApp application.
 #
 # Usage:
-#   ./smoke-test.sh http://localhost:8000
+#   ./smoke-test.sh https://libraryapp-sxmp.onrender.com
 #
 # Exercises the critical path end to end against a *running* instance:
 #   1. /health   liveness (retried with backoff, because a Render free
@@ -27,7 +27,7 @@ set -euo pipefail
 
 if [ "$#" -ne 1 ]; then
   echo "usage: $0 <base-url>" >&2
-  echo "example: $0 http://localhost:8000" >&2
+  echo "example: $0 https://libraryapp-sxmp.onrender.com" >&2
   exit 2
 fi
 
